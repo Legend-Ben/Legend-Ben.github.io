@@ -4,7 +4,7 @@ SEOTitle: Benl's Blog
 header-img: img/post-bg-desk.jpg
 email: benl_cs@163.com
 description: "开始写点东西了，记录生活工作日常点滴。"
-keyword: "BY, BY Blog, Benl的博客, JAVA, Android"
+keyword: "JAVA, Android"
 url: "http://Legend-Ben.github.io"          # your host, for absolute URL
 baseurl: ""      # for example, '/blog' if your blog hosted on 'host/blog'
 github_repo: "https://github.com/Legend-Ben/Legend-Ben.github.io.git" # you code repository
