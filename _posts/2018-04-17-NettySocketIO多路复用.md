@@ -7,20 +7,20 @@ author:     BY Benl                      # 作者
 header-img: img/post-bg-2015.jpg    #这篇文章标题背景图片
 catalog: true                       # 是否归档
 tags:                               #标签
-    - JAVA JavaScript
+JAVA JavaScript
 ---
 
 
 
-## 概念
+# 概念
 namespace 和room的概念其实用来同一个服务端socket多路复用的。namespace，room和socketio的关系如下:
 ![image](https://note.youdao.com/yws/api/personal/file/51F2ECF3CFCC45BE91AD5083DEEE1061?method=download&shareKey=015eb8df033e9d256b81cde054038bbf)
 
 每一个socket（每一个客户端）会属于某一个room，如果没有指定，那么会有一个default的room。这个room又会属于某个namespace，如果没有指定，那么就是默认的namespace /。
-## 广播
+# 广播
 socketIO广播的时候是以namespace或者room为单位的。指定某个namespace为单位，那么这个namespace下的所有room中的客户端都可以接收到广播消息。指定某个room为单位，那么只有这个room中的客户端可以接收到广播消息。
-## Netty-Socketio主要类和方法
-##### SocketIOClient 
+# Netty-Socketio主要类和方法
+#### SocketIOClient 
 客户端接口，其实现类是NamespaceClient，主要方法如下
 ```
 joinRoom() 加入到指定房间。
@@ -29,7 +29,7 @@ getSessionId()方法，返回由UUID生成的唯一标识。
 getAllRooms() 返回当前客户端所在的room名称列表。
 sendEvent(eventname,data) 向当前客户端发送事件。
 ```
-##### SocketIOServer 
+#### SocketIOServer 
 服务端实例，主要方法如下：
 
 ```
@@ -39,7 +39,7 @@ getRoomOperations() 返回所有命名空间中指定房间的广播对象，如
 getClient(uid) 返回默认名称空间的指定客户端。
 getNamespace() 返回指定名称的命名空间。
 ```
-##### Namespace 
+#### Namespace 
 命名空间。netty-socketio忠实的重现了socketio的server–>namespace–>room三层嵌套关系。 
  
 从NamespacesHub的getRoomClients方法可以知道，SocketIOServer的getRoomOperations方法返回的是所有namespace中指定room中的客户端实例。而不是指定命名空间或者默认命名空间的，使用该方法的时候要小心。
@@ -57,7 +57,7 @@ getBroadcastOperations() 返回针对空间中所有客户端的广播对象。
 getRoomOperations(room) 返回针对指定房间的广播对象。
 ```
 
-##### BroadcastOperations 
+#### BroadcastOperations 
 广播操作对象，通过对Namespace的了解我们知道，BroadcastOperations都是命名空间以指定room中的clients列表为参数创建的。 
 BroadcastOperations中最通用的方法便是sendEvent方法，该方法遍历clients，通过执行客户端的send方法实现广播目的。也可以设定一个排除对象，当然用于排除发送者自己了。
 
@@ -67,8 +67,8 @@ sendEvent(eventname,data) 向本广播对象中的全体客户端发送广播。
 sendEvent(eventname,excludeSocketIOClient,data) 排除指定客户端广播。
 ```
 
-## 操作
-##### namespace静态添加
+# 操作
+#### namespace静态添加
 
 ```
 private final SocketIOServer server;
@@ -90,7 +90,7 @@ private enum NamespaceEnum{
     namespace1,namespace2
 }
 ```
-##### room动态添加
+#### room动态添加
 
 js代码
 ```
@@ -106,7 +106,7 @@ public void onConnect(SocketIOClient client) {
     client.joinRoom(roomId);
 }
 ```
-##### 消息发布
+#### 消息发布
 
 ```
 public void sendMessageToNamespaceRoom(String namespace, String room, String content) {
