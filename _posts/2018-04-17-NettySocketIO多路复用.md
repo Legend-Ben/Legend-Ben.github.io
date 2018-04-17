@@ -1,3 +1,17 @@
+---
+layout:     post                    # 使用的布局（不需要改）
+title:      NettySocketIO多路复用               # 标题 
+subtitle:   NettySocketIO实现分组广播消息 #副标题
+date:       2018-04-17              # 时间
+author:     BY Benl                      # 作者
+header-img: img/post-bg-2015.jpg    #这篇文章标题背景图片
+catalog: true                       # 是否归档
+tags:                               #标签
+    - JAVA JavaScript
+---
+
+
+
 ## 概念
 namespace 和room的概念其实用来同一个服务端socket多路复用的。namespace，room和socketio的关系如下:
 ![image](https://note.youdao.com/yws/api/personal/file/51F2ECF3CFCC45BE91AD5083DEEE1061?method=download&shareKey=015eb8df033e9d256b81cde054038bbf)
